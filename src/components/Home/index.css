@@ -1,0 +1,61 @@
+.title {
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .title > h3 {
+    text-align: center;
+    color: #1e78d8;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .button a {
+    flex-direction: column;
+    text-decoration: none;
+    border: 2px solid #1e78d8;
+    border-radius: 20px;
+    padding: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .social-media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .social-media > img {
+    width: 70px;
+  }
+    @media (max-width: 640px){
+      .title{
+        font-size: 25px;
+      }
+    }
+
+    .about-us {
+        padding: 2rem;
+        background: #15a1d4;
+        text-align: center;
+    }
+    
+    .about-us h3 {
+        font-size: 45px;
+        margin-bottom: 1rem;
+    }
+    
+    .about-us p {
+        font-size: 20px;
+        line-height: 1.5;
+        max-width: 800px;
+        margin: 0 auto;
+        color: #333;
+    }
