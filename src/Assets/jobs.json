@@ -2,37 +2,28 @@
   {
     "id": 1,
     "subject": "Matematyka",
-    "logo": "amazon.png",
+    "logo": "teacher1.jpg",
     "school": "Liceum",
-    "role": "Fullstack",
-    "level": "Full Stack",
-    "experience": 1,
     "cost":100,
-    "description":"Korepetycje dla mlodych ambitnych gnojkow",
+    "description":"Korepetycje dla mlodych ambitnych uczniow",
     "location": "Łódź"
   },
   {
     "id": 2,
     "subject": "Fizyka",
-    "logo": "flp.jpeg",
+    "logo": "teacher2.jpg",
     "school": "Podstawówka",
-    "role": "Digital Marketing",
-    "level": "Negative",
-    "experience": 0,
     "cost": 200,
-    "description":"Korepetycje dla mlodych ambitnych gnojkow",
+    "description":"Korepetycje dla mlodych ambitnych uczniow",
     "location": "Warszawa"
   },
   {
     "id": 3,
     "subject": "Chemia",
-    "logo": "paytm.png",
+    "logo": "teacher3.jpg",
     "school": "Technikum",
-    "role": "Frontend",
-    "level": "Junior",
-    "experience": 2,
     "cost": 300,
-    "description":"Korepetycje dla mlodych ambitnych gnojkow",
+    "description":"Korepetycje dla mlodych ambitnych uczniow",
     "location": "Kraków"
   }
 ]

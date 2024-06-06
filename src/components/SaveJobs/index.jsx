@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar";
+import "./index.css";
+
 
 const SaveJobs = () => {
   const jobs = [JSON.parse(localStorage.getItem("Job"))];

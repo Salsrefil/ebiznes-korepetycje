@@ -5,25 +5,27 @@ import "./index.css";
 import Job from "./../../Assets/jobs.json";
 import Filter from "../Filter";
 
-const experience = [
-  { min: 0, max: 1 },
-  { min: 2, max: 3 },
-  { min: 4, max: 5 },
-  { min: 5, max: 10 },
-];
+
+
+const jobCategories = ["Podstawówka", "Liceum", "Technikum", "Zawodówka"];
+
 
 const Jobs = () => {
   const JobData = JSON.parse(localStorage.getItem("item")) || [];
   const [filteredJobs, setFilteredJobs] = useState([...JobData, ...Job]);
+  const [checkedState, setCheckedState] = useState(new Array(jobCategories.length).fill(false));
+
   const [active, setActive] = useState(false);
   function handleJobFilter(event) {
     const value = event.target.innerText;
     event.preventDefault();
-    setFilteredJobs(
-      Job.filter((job) => {
-        return job.role === value;
-      })
-    );
+    if (value === "Wszystkie") {
+      setFilteredJobs([...JobData, ...Job]); 
+    } else {
+      setFilteredJobs(
+        Job.filter((job) => job.subject === value)
+      );
+    }
   }
   function saveClick(id, logo, subject, school, location, description, cost) {
     window.localStorage.setItem(
@@ -34,19 +36,13 @@ const Jobs = () => {
   }
 
   function handleExperienceFilter(checkedState) {
-    let filters = [];
-    checkedState.forEach((item, index) => {
-      if (item === true) {
-        const filterS = Job.filter((job) => {
-          return (
-            job.experience >= experience[index].min &&
-            job.experience <= experience[index].max
-          );
-        });
-        filters = [...filters, ...filterS];
-      }
-      setFilteredJobs(filters);
-    });
+    const selectedSchools = jobCategories.filter((category, index) => checkedState[index]);
+    if (selectedSchools.length === 0) {
+      setFilteredJobs([...JobData, ...Job]); 
+    } else {
+      const filtered = Job.filter((job) => selectedSchools.includes(job.school));
+      setFilteredJobs(filtered);
+    }
   }
   return (
     <>
@@ -75,7 +71,6 @@ const Jobs = () => {
                           <h3>{school}</h3>
                           <div className="category">
                             <p>{location}</p>
-                            <p>{role}</p>
                           </div>
                         </div>
                       </div>
