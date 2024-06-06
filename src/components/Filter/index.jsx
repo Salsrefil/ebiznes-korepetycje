@@ -1,17 +1,17 @@
 import { useState } from "react";
 import "./index.css";
 
-const jobCategories = ["Podstawówka", "Liceum", "Technikum", "Zawodówka"];
+const tutorCategories = ["Podstawówka", "Liceum", "Technikum", "Zawodówka"];
 
 
 const Filter = ({
   setFilteredJobs,
-  handleJobFilter,
+  handleTutorFilter,
   handleExperienceFilter,
   searchEvent,
 }) => {
   const [checkedState, setCheckedState] = useState(
-    new Array(jobCategories.length).fill(false)
+    new Array(tutorCategories.length).fill(false)
   );
 
   const handleOnChange = (position) => {
@@ -28,23 +28,23 @@ const Filter = ({
         <div className="search-box">
 
           <div className="filter">
-            <div className="job-category">
-              <h4>Kategorie</h4>
+            <div className="tutor-category">
+              <h4>Przedmioty</h4>
               <ul>
-                <li onClick={handleJobFilter}>Wszystkie</li>
-                <li onClick={handleJobFilter}>Matematyka</li>
-                <li onClick={handleJobFilter}>Język Polski</li>
-                <li onClick={handleJobFilter}>Historia</li>
-                <li onClick={handleJobFilter}>Chemia</li>
-                <li onClick={handleJobFilter}>Biologia</li>
-                <li onClick={handleJobFilter}>Fizyka</li>
-                <li onClick={handleJobFilter}>Informatyka</li>
-                <li onClick={handleJobFilter}>Język Obcy</li>
-                <li onClick={handleJobFilter}>Inne</li>
+                <li onClick={handleTutorFilter}>Wszystkie</li>
+                <li onClick={handleTutorFilter}>Matematyka</li>
+                <li onClick={handleTutorFilter}>Język Polski</li>
+                <li onClick={handleTutorFilter}>Historia</li>
+                <li onClick={handleTutorFilter}>Chemia</li>
+                <li onClick={handleTutorFilter}>Biologia</li>
+                <li onClick={handleTutorFilter}>Fizyka</li>
+                <li onClick={handleTutorFilter}>Informatyka</li>
+                <li onClick={handleTutorFilter}>Język Obcy</li>
+                <li onClick={handleTutorFilter}>Inne</li>
               </ul>
             </div>
 
-            <div className="job-category">
+            <div className="tutor-category">
               <h4>Szkoła</h4>
               <ul className="checkbox">
                 <li>

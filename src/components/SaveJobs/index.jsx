@@ -8,32 +8,32 @@ const SaveJobs = () => {
   return (
     <div>
       <Navbar />
-      <div className="jobs-for-you">
+      <div className="tutor-for-you">
 
-        <div className="job-section">
-          <div className="job-page">
-            {jobs.map(({ logo, subject, school, location, role, description,cost }) => {
+        <div className="tutor-section">
+          <div className="tutor-page">
+            {jobs.map(({ logo, subject, school, location, tutor, description,cost }) => {
               return (
-                <div className="job-list">
-                  <div className="job-card">
-                    <div className="job-name">
+                <div className="tutor-list">
+                  <div className="tutor-card">
+                    <div className="tutor-name">
                       <img
                         src={require(`../../Assets/images/${logo}`)}
                         alt="logo"
-                        className="job-profile"
+                        className="tutor-profile"
                       />
-                      <div className="job-detail">
+                      <div className="tutor-detail">
                         <h4>{subject}</h4>
-                        <h3>{school}</h3>
+                        <h3>{tutor}</h3>
+                        <h5>{school}</h5>
                         <p>{description}</p>
                         <div className="category">
                           <p>{location}</p>
-                          <p>{role}</p>
                           <p>{cost} zł/h</p>
                         </div>
                       </div>
                     </div>
-                    <div className="job-posting">
+                    <div className="tutor-posting">
                     </div>
                   </div>
                 </div>

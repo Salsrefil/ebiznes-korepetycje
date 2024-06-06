@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 
@@ -19,10 +19,10 @@ const Navbar = () => {
               <Link to="/jobs">Ogłoszenia korepetycji</Link>
             </li>
             <li>
-              <Link to="/post-job">Wystaw ogłoszenie</Link>
+              <Link to="/post-tutoring">Wystaw ogłoszenie</Link>
             </li>
             <li>
-              <Link to="/saved-job">Logowanie/Rejestracja</Link>
+              <Link to="/saved-tutor">Logowanie/Rejestracja</Link>
             </li>
           </ul>
         </nav>

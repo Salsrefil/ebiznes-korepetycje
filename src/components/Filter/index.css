@@ -1,10 +1,10 @@
-.job-filter{
+.tutor-filter{
     display: flex;
     flex-direction: column;
 }
 
 
-.job-category{
+.tutor-category{
   margin-top: 39px;
   font-size: 20px;
   background-color: #fff;
@@ -12,18 +12,18 @@
   border-radius: 20px;
   box-shadow: #091e5a;
 }
-.job-category>ul{
+.tutor-category>ul{
   list-style: none;
   padding: 8px;
   cursor: pointer;
 }
-.job-category ul >li{
+.tutor-category ul >li{
   opacity: 0.8;
   margin-top: 10px;
   display: flex;
   gap: 4px;
 }
-.job-category ul >li:hover{
+.tutor-category ul >li:hover{
 color: blue;
 transform: scale(1.02);
 transition: 200ms ease;
@@ -34,10 +34,10 @@ transition: 200ms ease;
 @media (max-width:855px)
 {
 
-  .job-category{
+  .tutor-category{
     font-size: 10px;
   }
-  .job-category ul >li{
+  .tutor-category ul >li{
     font-size: 10px;
     display: flex;
     gap: 4px;
@@ -45,12 +45,12 @@ transition: 200ms ease;
 
 }
 @media (max-width:640px){
-  .job-card{
+  .tutor-card{
     display: flex;
     flex-wrap: wrap;
     width: 108%;
   }
- .job-section{
+ .tutor-section{
   flex-direction: column-reverse;
  }
 
@@ -59,7 +59,7 @@ transition: 200ms ease;
  ::placeholder{
   font-size: 10px;
  }
- .job-button{
+ .tutor-button{
   display: flex;
  }
  .filter{
@@ -67,11 +67,11 @@ transition: 200ms ease;
   justify-content: center;
   gap: 50px;
  }
- .job-category{
+ .tutor-category{
   width: 100px;
  }
 
- .job-detail{
+ .tutor-detail{
   width: 180px;
 }
 }
