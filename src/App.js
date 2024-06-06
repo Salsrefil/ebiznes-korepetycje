@@ -4,6 +4,7 @@ import Home from './components/Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Jobs from './components/Jobs';
 import SaveJobs from './components/SaveJobs';
+import Login from './components/Login';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/jobs" element={<Jobs />} />
+            <Route path="/signin" element={<Login />} />
             <Route path="/saved-job" element={<SaveJobs />} />
           </Route>
         </Routes>

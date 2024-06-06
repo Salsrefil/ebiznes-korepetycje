@@ -22,7 +22,7 @@ const Navbar = () => {
               <Link to="/post-job">Wystaw ogłoszenie</Link>
             </li>
             <li>
-              <Link to="/saved-job">Logowanie/Rejestracja</Link>
+              <Link to="/signin">Logowanie/Rejestracja</Link>
             </li>
           </ul>
         </nav>
