@@ -19,7 +19,7 @@ const Navbar = () => {
               <Link to="/jobs">Ogłoszenia korepetycji</Link>
             </li>
             <li>
-              <Link to="/post-tutoring">Wystaw ogłoszenie</Link>
+              <Link to="/post-job">Wystaw ogłoszenie</Link>
             </li>
             <li>
               <Link to="/saved-tutor">Logowanie/Rejestracja</Link>

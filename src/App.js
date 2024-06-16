@@ -4,6 +4,7 @@ import Home from './components/Home';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Jobs from './components/Jobs';
 import SaveJobs from './components/SaveJobs';
+import PostJob from './components/PostJob';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/jobs" element={<Jobs />} />
             <Route path="/saved-tutor" element={<SaveJobs />} />
+            <Route path="/post-job" element={<PostJob />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -2,8 +2,8 @@ import React, { useState, useEffect} from "react";
 import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
 import "./index.css";
-import Job from "./../../Assets/tutors.json";
 import Filter from "../Filter";
+import { db, ref, onValue } from "./../../utils/firebase.js";
 
 
 const experienceCategories = ["Podstawówka", "Liceum", "Technikum", "Zawodówka"];
@@ -11,14 +11,27 @@ const subjectCategories = ["Wszystkie", "Matematyka", "Język Polski", "Historia
 
 const Tutors = () => {
   const [active, setActive] = useState(false);
+  //localStorage.clear();
 
-  const JobData = JSON.parse(localStorage.getItem("item")) || [];
-  const [filteredJobs, setFilteredJobs] = useState([...JobData, ...Job]);
+  //const JobData = JSON.parse(localStorage.getItem("item")) || [];
+  const [jobData, setJobData] = useState([]);
+
+  const [filteredJobs, setFilteredJobs] = useState([]);
   const [checkedState, setCheckedState] = useState(new Array(experienceCategories.length).fill(false));
   const [selectedSubject, setSelectedSubject] = useState("Wszystkie");
-
   useEffect(() => {
-    const filtered = combinedFilter([...JobData, ...Job], selectedSubject, checkedState);
+    const jobRef = ref(db, );
+    onValue(jobRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const jobs = Object.values(data);
+        setJobData(jobs);
+        setFilteredJobs(jobs);
+      }
+    });
+  }, []);
+  useEffect(() => {
+    const filtered = combinedFilter(jobData, selectedSubject, checkedState);
     setFilteredJobs(filtered);
   }, [selectedSubject, checkedState]);
 
@@ -48,7 +61,7 @@ const Tutors = () => {
       "Job",
       JSON.stringify({ id, logo, subject, school, location,tutor, description, cost })
     );
-    console.log(JobData);
+    //console.log(JobData);
   };
 
   return (
