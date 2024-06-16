@@ -56,10 +56,10 @@ const Tutors = () => {
     setCheckedState(updatedCheckedState);
   };
 
-  const saveClick = (id, logo, subject, school, location,tutor, description, cost) => {
+  const saveClick = (id, logo, subject,logoUrl, school, location,tutor, description, cost) => {
     window.localStorage.setItem(
       "Job",
-      JSON.stringify({ id, logo, subject, school, location,tutor, description, cost })
+      JSON.stringify({ id, logo, subject, logoUrl,school, location,tutor, description, cost })
     );
     //console.log(JobData);
   };
@@ -71,17 +71,13 @@ const Tutors = () => {
         <div className="tutor-section">
           <div className="tutor-page">
             {filteredJobs.map(
-              ({ id, logo, subject, school, location, description, tutor, cost }) => {
+              ({ id, logo, subject,logoUrl, school, location, description, tutor, cost }) => {
                 return (
                   <div className="tutor-list" key={id}>
                     <div className="tutor-card">
                       <div className="tutor-name">
                         <img
-                          src={
-                            logo.length > 20
-                              ? logo
-                              : require(`../../Assets/images/${logo}`)
-                          }
+                          src={logo || require(`../../Assets/images/default.png`)}
                           alt="logo"
                           className="tutor-profile"
                         />
@@ -99,7 +95,7 @@ const Tutors = () => {
                         <div className="tutor-posting">
                           <Link to="/saved-tutor"
                             onClick={() => {
-                              saveClick(id, logo, subject, school, location,tutor, description, cost);
+                              saveClick(id, logo, subject,logoUrl, school, location,tutor, description, cost);
                               setActive(!active);
                             }}>Sprawdź ofertę</Link>
                         </div>

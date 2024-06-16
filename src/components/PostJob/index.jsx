@@ -1,15 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../Navbar";
-import "./index.css";
 import { useNavigate } from "react-router-dom";
-import { writeData } from "./../../utils/firebase.js";
-
-
+import { writeData, storage, storageRef, uploadString, getDownloadURL } from "./../../utils/firebase.js"; // Adjust the path as necessary
+import "./index.css";
 
 const PostJob = () => {
   const [company, setCompany] = useState("");
-  const [logo, setLogo] = useState("");
+  const [logo, setLogo] = useState(null);
   const [position, setPosition] = useState("");
   const [salary, setSalary] = useState("");
   const [experience, setExperience] = useState("");
@@ -26,15 +23,13 @@ const PostJob = () => {
       reader.readAsDataURL(file);
     });
   };
+
   const handleImg = (e) => {
     const file = e.target.files[0];
-    getBase64(file).then((base64) => {
-      localStorage["logo"] = base64;
-      setLogo(base64);
-    });
+    setLogo(file);
   };
 
-  const handleSubmitButton = (e) => {
+  const handleSubmitButton = async (e) => {
     e.preventDefault();
 
     if (!company) {
@@ -54,41 +49,46 @@ const PostJob = () => {
       return;
     }
 
-    const jobPost = {
-      id: Date.now().toString(), 
-      company,
-      logo,
-      position,
-      salary,
-      experience,
-      role,
-      location,
-    };
+    const jobPostId = Date.now().toString(); // Generate a unique ID for the job post
 
-    writeData(
-      jobPost.id,
-      jobPost.position,
-      jobPost.logo,
-      jobPost.company,
-      jobPost.experience,
-      jobPost.salary,
-      jobPost.role,
-      jobPost.location
-    );
+    try {
+      // Upload the logo to Firebase Storage
+      let logoUrl = "";
+      if (logo) {
+        const storageReference = storageRef(storage, `logos/${jobPostId}`);
+        const base64Logo = await getBase64(logo); // Await the base64 conversion
+        await uploadString(storageReference, base64Logo, 'data_url');
+        logoUrl = await getDownloadURL(storageReference);
+      }
 
-    window.alert("Form Submitted Successfully");
-    navigate("/Jobs");
+      // Save job post data to Realtime Database with the logo URL
+      writeData(
+        jobPostId,
+        position,
+        logoUrl,
+        company,
+        experience,
+        salary,
+        role,
+        location
+      );
+
+      window.alert("Form Submitted Successfully");
+      navigate("/Jobs");
+    } catch (error) {
+      console.error("Error uploading file or saving data: ", error);
+      window.alert("Failed to submit the form. Please try again.");
+    }
   };
+
   return (
     <div>
       <Navbar />
 
-      <div className="job-background">
-
-      </div>
+      <div className="job-background"></div>
       <div className="container">
         <header className="header">
-          <h1 className="post-job">Wypełnij formularz </h1>
+          <h1 className="post-job">Wypełnij formularz</h1>
         </header>
         <form>
           <div className="form-group">
@@ -141,7 +141,7 @@ const PostJob = () => {
               required
             >
               <option disabled selected value>
-                Wybierz przedmiot 
+                Wybierz przedmiot
               </option>
               <option>Matematyka</option>
               <option>Język Polski</option>
@@ -182,7 +182,6 @@ const PostJob = () => {
               />
               Podstawówka
             </label>
-            
             <label>
               <input
                 name="user-recommend"
@@ -211,7 +210,6 @@ const PostJob = () => {
               Zawodówka
             </label>
           </div>
-
 
           <div className="form-group">
             <label id="name-label" htmlFor="name">

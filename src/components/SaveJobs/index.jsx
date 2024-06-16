@@ -1,10 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar";
 import "./index.css";
+import { storage, getDownloadURL, storageRef } from "./../../utils/firebase.js";
 
 
 const SaveJobs = () => {
-  const jobs = [JSON.parse(localStorage.getItem("Job"))];
+  const [jobs, setJobs] = useState([]);
+
+
+
+  useEffect(() => {
+    const savedJob = JSON.parse(localStorage.getItem("Job"));
+    if (savedJob && savedJob.logo) {
+      fetchLogoUrl(savedJob.logo).then((logoUrl) => {
+        savedJob.logoUrl = logoUrl;
+        setJobs([savedJob]);
+      });
+    }
+  }, []);
+
+  const fetchLogoUrl = async (logoPath) => {
+    try {
+      const logoRef = storageRef(storage, `logos/${logoPath}`);
+      const logoUrl = await getDownloadURL(logoRef);
+      return logoUrl;
+    } catch (error) {
+      console.error("Error fetching logo URL:", error);
+      return "";
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -18,7 +43,7 @@ const SaveJobs = () => {
                   <div className="tutor-card">
                     <div className="tutor-name">
                       <img
-                        src={require(`../../Assets/images/${logo}`)}
+                       src={logo || require(`../../Assets/images/default.png`)}
                         alt="logo"
                         className="tutor-profile"
                       />

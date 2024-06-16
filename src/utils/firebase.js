@@ -2,7 +2,7 @@ import firebase from "firebase/compat/app";
 import "firebase/firestore"
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref,set,  onValue } from "firebase/database";
-import { snapshotEqual } from "firebase/firestore";
+import { getStorage, ref as storageRef, uploadString, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBjybcFZ0BODY_UNWmqF-pciAHSzETdxSE",
@@ -17,6 +17,8 @@ const firebaseConfig = {
 
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
+  const storage = getStorage(app);
+
   
   function writeData(tutorId, subject, logo, tutor, school, cost, description, location) {
     const reference = ref(db, tutorId);
@@ -31,4 +33,4 @@ const firebaseConfig = {
       location: location
     });
   }
-export { db, ref, onValue, writeData };
+export { db, ref, onValue, writeData, storage, storageRef, uploadString, getDownloadURL };
