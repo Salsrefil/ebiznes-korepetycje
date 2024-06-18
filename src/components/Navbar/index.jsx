@@ -19,10 +19,10 @@ const Navbar = () => {
               <Link to="/jobs">Ogłoszenia korepetycji</Link>
             </li>
             <li>
-              <Link to="/post-job">Wystaw ogłoszenie</Link>
+              <Link to="/post-tutoring">Wystaw ogłoszenie</Link>
             </li>
             <li>
-              <Link to="/saved-tutor">Logowanie/Rejestracja</Link>
+              <Link to="/signin">Logowanie/Rejestracja</Link>
             </li>
           </ul>
         </nav>
