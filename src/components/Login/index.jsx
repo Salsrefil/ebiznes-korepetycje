@@ -1,5 +1,6 @@
 // src/FirebaseAuth.js
 import React, { useEffect } from 'react';
+import Navbar from "../Navbar";
 import firebase from 'firebase/compat/app';
 import 'firebase/auth';
 import * as firebaseui from 'firebaseui';
@@ -19,7 +20,10 @@ const FirebaseAuth = () => {
     });
   }, []);
 
-  return <div id="firebaseui-auth-container"></div>;
+  return ( <>
+        <Navbar />
+  <div id="firebaseui-auth-container"></div>
+  </>);
 };
 
 export default FirebaseAuth;

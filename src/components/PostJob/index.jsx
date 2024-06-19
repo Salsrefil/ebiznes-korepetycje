@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
 import { writeData, storage, storageRef, uploadString, getDownloadURL } from "./../../utils/firebase.js"; // Adjust the path as necessary
+import useAuth from "../../useAuth"; 
 import "./index.css";
 
 const PostJob = () => {
@@ -15,6 +16,11 @@ const PostJob = () => {
   const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
+
+  const isAuthenticated = useAuth(); // Use the custom hook
+  if (!isAuthenticated) {
+    return null; // Optionally render a loading indicator
+  }
 
   const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
