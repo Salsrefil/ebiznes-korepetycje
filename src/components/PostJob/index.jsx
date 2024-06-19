@@ -12,6 +12,7 @@ const PostJob = () => {
   const [experience, setExperience] = useState("");
   const [role, setRole] = useState("");
   const [location, setLocation] = useState("");
+  const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
 
@@ -70,7 +71,8 @@ const PostJob = () => {
         experience,
         salary,
         role,
-        location
+        location,
+        email
       );
 
       window.alert("Form Submitted Successfully");
@@ -221,6 +223,19 @@ const PostJob = () => {
               className="form-control"
               placeholder="Cena"
               onChange={(e) => setSalary(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label id="name-label" htmlFor="name">
+              Email
+            </label>
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>

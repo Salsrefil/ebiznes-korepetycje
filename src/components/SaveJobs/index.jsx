@@ -37,7 +37,7 @@ const SaveJobs = () => {
 
         <div className="tutor-section">
           <div className="tutor-page">
-            {jobs.map(({ logo, subject, school, location, tutor, description,cost }) => {
+            {jobs.map(({ logo, subject, school, location, tutor, description,cost, email }) => {
               return (
                 <div className="tutor-list">
                   <div className="tutor-card">
@@ -58,9 +58,12 @@ const SaveJobs = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="tutor-posting">
+                    <div className="tutor-contact">
+                      <h4>Contact Information</h4>
+                      <p>Email: {email}</p>
                     </div>
                   </div>
+                  
                 </div>
               );
             })}

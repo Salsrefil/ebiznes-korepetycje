@@ -20,7 +20,7 @@ const firebaseConfig = {
   const storage = getStorage(app);
 
   
-  function writeData(tutorId, subject, logo, tutor, school, cost, description, location) {
+  function writeData(tutorId, subject, logo, tutor, school, cost, description, location, email) {
     const reference = ref(db, tutorId);
     set(reference, {
       id: tutorId,
@@ -30,7 +30,8 @@ const firebaseConfig = {
       school: school,
       cost: cost,
       description: description,
-      location: location
+      location: location,
+      email: email
     });
   }
 export { db, ref, onValue, writeData, storage, storageRef, uploadString, getDownloadURL };

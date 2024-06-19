@@ -5,3 +5,17 @@
   .tutor-detail>p {
     margin-top: 20px;
   }
+  .tutor-info {
+    display: flex;
+    flex-direction: row;
+    width: 70%; /* Adjust the width as needed */
+  }
+  
+  .tutor-contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%; /* Adjust the width as needed */
+    border-left: 1px solid #ddd; /* Add a separator line */
+    padding-left: 20px; /* Add padding to separate from the border */
+  }

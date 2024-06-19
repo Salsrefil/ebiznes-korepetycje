@@ -59,10 +59,10 @@ const Tutors = () => {
     setCheckedState(updatedCheckedState);
   };
 
-  const saveClick = (id, logo, subject, logoUrl, school, location, tutor, description, cost) => {
+  const saveClick = (id, logo, subject, logoUrl, school, location, tutor, description, cost, email) => {
     window.localStorage.setItem(
       "Job",
-      JSON.stringify({ id, logo, subject, logoUrl, school, location, tutor, description, cost })
+      JSON.stringify({ id, logo, subject, logoUrl, school, location, tutor, description, cost, email })
     );
   };
 
@@ -73,7 +73,7 @@ const Tutors = () => {
         <div className="tutor-section">
           <div className="tutor-page">
             {filteredJobs.map(
-              ({ id, logo, subject, logoUrl, school, location, description, tutor, cost }) => {
+              ({ id, logo, subject, logoUrl, school, location, description, tutor, cost, email }) => {
                 return (
                   <div className="tutor-list" key={id}>
                     <div className="tutor-card">
@@ -97,7 +97,7 @@ const Tutors = () => {
                         <div className="tutor-posting">
                           <Link to="/saved-tutor"
                             onClick={() => {
-                              saveClick(id, logo, subject, logoUrl, school, location, tutor, description, cost);
+                              saveClick(id, logo, subject, logoUrl, school, location, tutor, description, cost, email);
                               setActive(!active);
                             }}>Sprawdź ofertę</Link>
                         </div>
