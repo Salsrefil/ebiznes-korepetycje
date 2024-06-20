@@ -52,15 +52,15 @@ const SaveJobs = () => {
                         <h3>{tutor}</h3>
                         <h5>{school}</h5>
                         <p>{description}</p>
-                        <div className="category">
-                          <p>{location}</p>
-                          <p>{cost} zł/h</p>
-                        </div>
+
                       </div>
                     </div>
                     <div className="tutor-contact">
-                      <h4>Contact Information</h4>
                       <p>Email: {email}</p>
+                      <div className="category">
+                          <p>{location}</p>
+                          <p>{cost} zł/h</p>
+                        </div>
                     </div>
                   </div>
                   
